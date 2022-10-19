@@ -4,7 +4,7 @@ import QuoteCard from "./QuoteCard";
 
 function Quotes() {
 
-  const quoteState = useSelector((quotes) => quotes)
+  const quotesData = useSelector((state) => state.quotes)
 
   return (
     <div>
@@ -16,7 +16,7 @@ function Quotes() {
       <div className="container">
         <div className="row">
           <div className="col-md-4">
-            { quoteState.quotes.map((quote) => <QuoteCard quote={quote} />)}
+            { quotesData.map((quote) => <QuoteCard quote={quote} />)}
           </div>
         </div>
       </div>

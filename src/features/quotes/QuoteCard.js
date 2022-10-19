@@ -1,8 +1,19 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { upvoteQuote } from "./quotesSlice";
+import { downvoteQuote, upvoteQuote } from "./quotesSlice";
 
 function QuoteCard({ quote }) {
+
+  const dispatch = useDispatch()
+
+  function handleUpvoteClick(){
+    dispatch(upvoteQuote(quote.id))
+  }
+
+  function handleDownvoteClick(){
+    dispatch(downvoteQuote(quote.id))
+  }
+
   return (
     <div>
       <div className="card card-inverse card-success card-primary mb-3 text-center">
@@ -21,10 +32,10 @@ function QuoteCard({ quote }) {
             role="group"
             aria-label="Basic example"
           >
-            <button type="button" className="btn btn-primary" onClick={useDispatch(upvoteQuote(quote.id))}>
+            <button type="button" className="btn btn-primary" onClick={handleUpvoteClick}>
               Upvote
             </button>
-            <button type="button" className="btn btn-secondary">
+            <button type="button" className="btn btn-secondary" onClick={handleDownvoteClick} >
               Downvote
             </button>
             <button type="button" className="btn btn-danger">
